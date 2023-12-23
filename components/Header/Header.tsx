@@ -1,14 +1,28 @@
-import Link from "next/link";
+
 import style from './Header.module.scss'
+import {HeaderNavigation} from "@/components/Header/HeaderNavigation/HeaderNavigation";
 
 export function Header() {
+    const navLinks = [
+        {
+            id : 1,
+            label : 'Home' ,
+            href : '/'
+        } ,
+        {
+            id : 2,
+            label: 'Blog',
+            href:  '/blog',
+        },
+        {
+            id : 3,
+            label: 'About',
+            href: '/about'
+        }
+    ]
     return (
         <header className={style.block}>
-            <div className={style.links}>
-                <Link  className={style.link} href={'/'}>Home</Link>
-                <Link  className={style.link} href={'/blog'}>Blog</Link>
-                <Link  className={style.link} href={'/about'}>About</Link>
-            </div>
+              <HeaderNavigation navLinks={navLinks}/>
         </header>
     )
 }
