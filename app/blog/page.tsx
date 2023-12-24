@@ -4,6 +4,8 @@ import {useEffect, useState} from "react";
 import {getAllPosts} from "@/app/services/posts/getPosts";
 import {CustomLoading} from "@/app/utility/CustomLoading/CustomLoading";
 import {PostSearch} from "@/components/PostSearch/PostSearch";
+import useSWR from "swr";
+import {ILink} from "@/components/Header/HeaderNavigation/HeaderNavigation";
 
 
 // async function getData() {
@@ -16,18 +18,12 @@ import {PostSearch} from "@/components/PostSearch/PostSearch";
 // }
 
 export default function BlogPage() {
-    const [posts , setPosts] = useState<any[]>([]);
-    const [loading , setLoading] = useState<boolean>(true);
-
-    useEffect(() => {
-        getAllPosts().then((res) =>     setPosts(res.data)).finally(() => setLoading(false))
-    }, []);
-
+    const {data : posts  , isLoading} = useSWR('posts' , getAllPosts)
     return (
         <>
             <h1>Blog page</h1>
-            <PostSearch callback={setPosts}/>
-            {loading ? <CustomLoading/> : posts?.map((post : any) => {
+            <PostSearch/>
+            {isLoading ? <CustomLoading/> : posts?.map((post : any) => {
                 return (
                     <li key={post.id}>
                         <Link href={`/blog/${post.id}`}>{post.title}</Link>

@@ -1,17 +1,15 @@
 'use client'
 import {FormEventHandler, useState} from "react";
 import {getPostByQuery} from "@/app/services/posts/getPosts";
+import useSWR from "swr";
 
-type IPostSearch = {
-    callback : (value : any[]) => void
-}
-
-export function PostSearch({callback} : IPostSearch) {
+export function PostSearch() {
+    const {mutate} = useSWR('posts')
     const [search , setSearch] = useState<string>('');
 
    const  handleSubmit : FormEventHandler<HTMLFormElement> =  (e) => {
        e.preventDefault();
-       getPostByQuery(search).then((res) => callback(res.data))
+       getPostByQuery(search).then((res) => mutate(res.data))
     }
 
     return  (
