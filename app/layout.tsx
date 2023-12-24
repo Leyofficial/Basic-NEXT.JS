@@ -1,9 +1,9 @@
 import './globals.css'
 import type {Metadata} from 'next'
-import {Inter} from 'next/font/google'
 import {Header} from "@/components/Header/Header";
 import {Footer} from "@/components/Footer/Footer";
 import React from "react";
+import {Providers} from "@/components/Providers/Providers";
 
 
 export const metadata: Metadata = {
@@ -18,11 +18,13 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body>
+        <body>
+            <Providers>
                 <Header/>
                 <main className={'container'}>{children}</main>
                 <Footer/>
-            </body>
+            </Providers>
+        </body>
         </html>
     )
 }

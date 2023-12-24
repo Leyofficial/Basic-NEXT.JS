@@ -1,4 +1,4 @@
-import {getPostById} from "@/app/services/posts/getPosts";
+import {getPostById} from "@/services/posts/getPosts";
 
 
 type IProps = {

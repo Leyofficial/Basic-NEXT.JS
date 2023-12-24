@@ -1,5 +1,4 @@
-import {CircularProgress} from "@mui/material";
-import {CustomLoading} from "@/app/utility/CustomLoading/CustomLoading";
+import {CustomLoading} from "@/utility/CustomLoading/CustomLoading";
 
 export default function LoadingBlogs() {
     return <div>

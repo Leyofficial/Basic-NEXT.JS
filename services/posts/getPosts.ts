@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import {ILink} from "@/app/types/types";
+import {ILink} from "@/types/types";
 
 export async function getAllPosts() {
    const res = await fetch('/api/posts');
