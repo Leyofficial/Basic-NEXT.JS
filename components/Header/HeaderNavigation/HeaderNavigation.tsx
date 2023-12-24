@@ -2,12 +2,9 @@
 import {usePathname} from "next/navigation";
 import style from '../Header.module.scss'
 import Link from "next/link";
+import {ILink} from "@/app/types/types";
 
-export type ILink = {
-    label : string,
-    href : string
-    id : string | number
-}
+
 
 type Props = {
     navLinks : ILink[]

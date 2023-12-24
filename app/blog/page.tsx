@@ -7,12 +7,12 @@ import useSWR from "swr";
 
 
 export default function BlogPage() {
-    const {data : posts  , isLoading} = useSWR('lox' , getAllPosts)
+    const {data : posts  , isLoading} = useSWR('posts' , getAllPosts)
     return (
         <>
             <h1>Blog page</h1>
             <PostSearch/>
-            {isLoading ? <CustomLoading/> : posts?.map((post : any) => {
+            {isLoading ? <CustomLoading/> : posts.map((post : any) => {
                 return (
                     <li key={post.id}>
                         <Link href={`/blog/${post.id}`}>{post.title}</Link>

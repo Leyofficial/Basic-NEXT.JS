@@ -1,3 +1,4 @@
+import {getPostById} from "@/app/services/posts/getPosts";
 
 
 type IProps = {
@@ -6,21 +7,18 @@ type IProps = {
     }
 }
 
-async function getData(id : string) {
-    const response = await fetch(`http://jsonplaceholder.typicode.com/posts/${id}` , {
-        next : {
-            revalidate : 60
-        }
-    });
-    return response.json()
+
+async function getBlogItem (id : string) {
+    return  await getPostById(id);
 }
 
+
 export default async function BlogItem({params : { id } } : IProps){
-    const data = await getData(id);
+    const data  = await getBlogItem(id)
     return (
         <>
-        <h1>{data.title}</h1>
-            <p>{data.body}</p>
+        <h1>{data?.title}</h1>
+            <p>{data?.body}</p>
         </>
     )
  }
