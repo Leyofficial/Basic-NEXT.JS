@@ -4,7 +4,7 @@ import {getPostByQuery} from "@/app/services/posts/getPosts";
 import useSWR from "swr";
 
 export function PostSearch() {
-    const {mutate} = useSWR('posts')
+    const {mutate} = useSWR('lox')
     const [search , setSearch] = useState<string>('');
 
    const  handleSubmit : FormEventHandler<HTMLFormElement> =  (e) => {
