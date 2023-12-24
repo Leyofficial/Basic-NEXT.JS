@@ -1,11 +1,12 @@
 import axios from "axios";
 import {ILink} from "@/components/Header/HeaderNavigation/HeaderNavigation";
 
+
 export async function getAllPosts() {
-   const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
+   const res = await axios.get('/api/posts');
    return res.data
 }
 
 export async function getPostByQuery(search: string) {
-   return axios.get<ILink[]>(`https://jsonplaceholder.typicode.com/posts?q=${search}`)
+   return axios.get<ILink[]>(`/api/posts?q=${search}`)
 }
