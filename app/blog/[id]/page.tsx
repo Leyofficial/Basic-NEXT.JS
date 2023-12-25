@@ -1,4 +1,4 @@
-import {getPostById} from "@/services/posts/getPosts";
+import {getAllPosts, getPostById} from "@/services/posts/getPosts";
 
 
 type IProps = {
@@ -7,6 +7,13 @@ type IProps = {
     }
 }
 
+export async function generateStaticParams(){
+    const posts : any[] = await getAllPosts();
+
+    return posts.map((post) => ({
+        slug : post.id.toString()
+    }))
+}
 
 async function getBlogItem (id : string) {
     return  await getPostById(id);
