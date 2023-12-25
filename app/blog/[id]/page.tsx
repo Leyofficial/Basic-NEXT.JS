@@ -1,5 +1,4 @@
-import {getAllPosts, getPostById} from "@/services/posts/getPosts";
-import {revalidatePath} from "next/cache";
+import {deletePost, getAllPosts, getPostById} from "@/services/posts/getPosts";
 import {redirect} from "next/navigation";
 
 
@@ -24,26 +23,17 @@ async function getBlogItem (id : string) {
 
 export default async function BlogItem({params : { id } } : IProps){
     const data  = await getBlogItem(id)
-
-     async function deletePost() {
+      async function handlerDeletePost() {
         'use server'
-        await fetch(`http://localhost:3001/posts/${id}` , {
-            method : 'DELETE',
-            headers : {
-                "Content-Type" : "application/json"
-            },
-        })
-        revalidatePath('/blog');
-        redirect('/blog')
+          await deletePost(id)
+          redirect('/blog')
     }
-
     return (
         <>
         <h1>{data?.title}</h1>
             <p>{data?.body}</p>
-            <form action={deletePost}>
+            <form action={handlerDeletePost}>
                 <input type="submit" value={'delete post'}/>
-
             </form>
         </>
     )
