@@ -14,7 +14,7 @@ type Props = {
 export function HeaderNavigation({navLinks} : Props) {
     const session = useSession();
     const pathname = usePathname();
-
+    console.log(session)
 
     return (
         <div className={style.links}>

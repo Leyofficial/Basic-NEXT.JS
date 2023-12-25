@@ -45,6 +45,9 @@ export async function GET(request: Request, {params}: { params: { id: string } }
     if (post) {
         return NextResponse.json(post);
     } else {
-        return NextResponse.json(posts)
+        return NextResponse.json({
+            message : 'This post haven`t found',
+            status : 500
+        })
     }
 }
