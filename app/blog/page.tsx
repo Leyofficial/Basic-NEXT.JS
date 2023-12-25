@@ -2,6 +2,8 @@ import Link from "next/link";
 import React from "react";
 import {getAllPosts} from "@/services/posts/getPosts";
 
+export const revalidate = 2
+
 export default async function BlogPage(){
     const posts = await getAllPosts();
     return (

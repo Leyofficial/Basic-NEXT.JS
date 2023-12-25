@@ -14,16 +14,6 @@
       "id": "3",
       "title": "Post number 3 and is third version 3",
       "body": "Some info about post number 3"
-    },
-    {
-      "id" : "4" ,
-      "title" :  "Post number 4 is firth" ,
-      "body" :  "Some info about post number 3"
-    },
-    {
-      "id" : "5" ,
-      "title" :  "Post number 5 is firth" ,
-      "body" :  "Some info about post number 3"
     }
   ]
 }

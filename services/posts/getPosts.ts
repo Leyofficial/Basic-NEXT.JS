@@ -4,11 +4,7 @@ import {ILink} from "@/types/types";
 
 export async function getAllPosts() {
    // const res = await fetch('/api/posts');
-    const res = await fetch('http://localhost:3000/posts' , {
-        next : {
-            revalidate : 10
-        }
-    })
+    const res = await fetch('http://localhost:3000/posts' , )
    return res.json()
 }
 
