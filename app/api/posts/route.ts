@@ -1,7 +1,8 @@
 import {NextResponse} from "next/server";
-import {posts} from "@/app/api/posts/posts";
+import {getAllPosts} from "@/services/posts/getPosts";
 
 export async function GET(req  : Request) {
+    const posts = await getAllPosts()
     const { searchParams } = new URL(req.url);
 
     const query = searchParams.get('q');
@@ -9,7 +10,7 @@ export async function GET(req  : Request) {
     let currentPosts = posts;
 
     if (query){
-        currentPosts = posts.filter((post) => post.title.toLowerCase().includes(query.toLowerCase()))
+        currentPosts = posts.filter((post : any) => post.title.toLowerCase().includes(query.toLowerCase()))
     }
 
     return NextResponse.json( currentPosts )

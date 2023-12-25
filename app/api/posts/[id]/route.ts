@@ -1,19 +1,20 @@
 import {NextResponse} from 'next/server';
-import {posts} from "@/app/api/posts/posts";
 import {headers} from "next/headers";
+import {getAllPosts} from "@/services/posts/getPosts";
 
 export async function DELETE(request: Request, {params}: {
     params: {
         id: string
     }
 }) {
+    const posts = await getAllPosts()
     const id = params.id;
 
     const headerList = headers();
     const isAuth = headerList.get('isAuth');
 
     let deletedPost;
-    let currentPost = posts.find((post, index) => {
+    let currentPost = posts.find((post : any, index : number) => {
         if (id && post.id === id) {
             posts.splice(index, 1);
             deletedPost = post;
@@ -39,15 +40,17 @@ export async function DELETE(request: Request, {params}: {
 
 
 export async function GET(request: Request, {params}: { params: { id: string } }) {
+    const posts = await getAllPosts()
     const id = params.id;
-    const post = posts.find((post) => post.id === id);
+    const post = posts.find((post : any) => post.id === id);
 
     if (post) {
         return NextResponse.json(post);
     } else {
         return NextResponse.json({
             message : 'This post haven`t found',
-            status : 500
+            allPosts : posts,
+            status : 500,
         })
     }
 }

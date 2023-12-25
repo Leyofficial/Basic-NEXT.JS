@@ -31,8 +31,6 @@ export const authConfig: AuthOptions = {
 
                 if (currentUser && currentUser.password === credentials.password) {
                     const { password, ...userWithoutPass } = currentUser;
-                    console.log('password : '  + password)
-                    console.log('user :' +  userWithoutPass)
                     return userWithoutPass as unknown as  User;
                 }
 
