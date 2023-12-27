@@ -2,10 +2,35 @@
 
 exports[`renders homepage unchanged 1`] = `
 <div>
-  <h1
-    class="title"
-  >
-    Welcome to Next]S world
-  </h1>
+  <div>
+    <h1
+      class="title"
+    >
+      Welcome to NextJS world
+    </h1>
+    <ul>
+      <li>
+        HTML
+      </li>
+      <li>
+        CSS
+      </li>
+      <li>
+        JavaScript
+      </li>
+      <li>
+        TypeScript
+      </li>
+      <li>
+        React
+      </li>
+      <li>
+        Node js
+      </li>
+      <li>
+        Next js
+      </li>
+    </ul>
+  </div>
 </div>
 `;
